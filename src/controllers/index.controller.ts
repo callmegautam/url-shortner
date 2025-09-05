@@ -18,7 +18,7 @@ export const shortController = async (req: Request, res: Response) => {
             });
         }
 
-        const existingUrl = await db.select().from(urls).where(eq(urls.url, data.website)).execute();
+        const existingUrl = await db.select().from(urls).where(eq(urls.url, data.website));
 
         if (existingUrl.length > 0) {
             console.log("website already exist");
@@ -55,6 +55,6 @@ export const shortController = async (req: Request, res: Response) => {
             },
         });
     } catch (error) {
-        throw new Error("Error: ");
+        throw new Error("Error");
     }
 };
