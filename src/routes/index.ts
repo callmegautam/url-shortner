@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { shortController } from "../controllers";
+import { urlShortner } from "@/controllers";
+import asyncHandler from "@/utils/async-handler";
 
 const router = Router();
 
-router.post("/shorten", shortController);
+router.post("/shorten", asyncHandler(urlShortner));
 
 export default router;

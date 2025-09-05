@@ -1,5 +1,5 @@
 import { z } from "zod";
 
-export const shortSchema = z.object({
+export const websiteSchema = z.object({
     website: z.url(),
 });
