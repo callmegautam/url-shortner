@@ -1,7 +1,12 @@
 import { z } from "zod";
 
+export enum NodeEnv {
+    DEVELOPMENT = "DEVELOPMENT",
+    PRODUCTION = "PRODUCTION",
+}
+
 const env = z.object({
-    NODE_ENV: z.enum(["DEVELOPMENT", "PRODUCTION"]),
+    NODE_ENV: z.enum(NodeEnv),
     PORT: z.coerce.number(),
     FRONTEND_URL: z.string(),
     DB_URL: z.string(),
