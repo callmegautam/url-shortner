@@ -1,3 +1,3 @@
-import { urlShortner } from "./url";
+import { urlShortner, redirectUrl } from "./url";
 
-export { urlShortner };
+export { urlShortner, redirectUrl };

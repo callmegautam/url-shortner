@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { urlShortner } from "@/controllers";
+import { urlShortner, redirectUrl } from "@/controllers";
 import { asyncHandler } from "@/utils";
 
 const router = Router();
 
-router.post("/shorten", asyncHandler(urlShortner));
+router.post("/short", asyncHandler(urlShortner));
+router.get("/redirect/:shortUrlKey", asyncHandler(redirectUrl));
 
 export default router;
