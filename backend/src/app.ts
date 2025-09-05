@@ -5,7 +5,7 @@ import env from "@/config/env";
 
 const app = express();
 
-app.use(cors({ origin: env.FRONTEND_URL }));
+app.use(cors({ origin: "*" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

@@ -70,5 +70,13 @@ export const redirectUrl = async (req: Request, res: Response) => {
         });
     }
 
-    return res.redirect(originalUrl[0].url);
+    console.log(`Redirect ${shortUrl} to ${originalUrl[0].url}`);
+
+    return res.status(HttpStatus.OK).json({
+        success: true,
+        message: "Redirecting...",
+        data: {
+            originalUrl: originalUrl[0].url,
+        },
+    });
 };
