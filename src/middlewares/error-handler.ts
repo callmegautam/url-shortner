@@ -1,7 +1,7 @@
-import env from "@/config/env";
-import { NodeEnv } from "@/types/types";
 import type { Request, Response, NextFunction } from "express";
 import { ZodError } from "zod";
+import env from "@/config/env";
+import { NodeEnv } from "@/types/types";
 
 const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
     const statusCode = err.statusCode || 500;

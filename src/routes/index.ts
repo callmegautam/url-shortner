@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { urlShortner } from "@/controllers";
-import asyncHandler from "@/utils/async-handler";
+import { asyncHandler } from "@/utils";
 
 const router = Router();
 
