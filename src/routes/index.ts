@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { shortController } from "../controllers/index.controller";
+import { shortController } from "../controllers";
 
 const router = Router();
 

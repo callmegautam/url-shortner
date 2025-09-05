@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
+import globalErrorHandler from "./middlewares/error-handler";
 
 const app = express();
 
@@ -11,12 +12,11 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-import urlRoute from "./routes/index.routes";
+// routes
+import urlRoute from "./routes";
 
-app.use("/", urlRoute);
+app.use("/url", urlRoute);
 
-app.listen(8080, () => {
-    console.log("Server is listening on http://localhost:8080");
-});
+app.use(globalErrorHandler);
 
 export default app;

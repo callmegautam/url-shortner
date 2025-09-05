@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { shortSchema } from "../utils/schema";
-import encodeBase62 from "../utils/encodeBase62";
+import { shortSchema } from "../types/schema";
+import encodeBase62 from "../utils/encode-base-62";
 import db from "@/db";
 import { urls } from "@/db/schema";
 import { eq } from "drizzle-orm";

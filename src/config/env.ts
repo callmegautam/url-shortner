@@ -1,9 +1,5 @@
+import { NodeEnv } from "@/types/types";
 import { z } from "zod";
-
-export enum NodeEnv {
-    DEVELOPMENT = "DEVELOPMENT",
-    PRODUCTION = "PRODUCTION",
-}
 
 const env = z.object({
     NODE_ENV: z.enum(NodeEnv),
