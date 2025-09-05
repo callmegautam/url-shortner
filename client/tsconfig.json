@@ -1,0 +1,22 @@
+{
+    "files": [],
+    "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+    "exclude": ["node_modules"],
+    "include": ["src/**/*.{tsx, ts}"],
+    "tsc-alias": {
+        "resolveFullPaths": true,
+        "verbose": true
+    },
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "jsx": "react-jsx",
+        "strict": true,
+        "moduleResolution": "Node",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "$/*": ["./*"]
+        }
+    }
+}
