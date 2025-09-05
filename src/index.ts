@@ -1,20 +1,10 @@
-import express, { Request, Response } from "express";
-import cors from "cors";
+import app from "./app";
+import env from "./config/env";
 
-const app = express();
+app.listen(env.PORT || 8080, () => {
+    console.log(`Server is listening on ${env.BACKEND_URL}:${env.PORT}`);
+});
 
-app.use(
-    cors({
-        origin: "*",
-    })
-);
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-import urlRoute from "./routes/index.routes";
-
-app.use("/", urlRoute);
-
-app.listen(8080, () => {
-    console.log("Server is listening on http://localhost:8080");
+app.on("error", (err: any) => {
+    console.error(`Error occured: ${err.message}`);
 });

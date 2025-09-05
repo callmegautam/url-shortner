@@ -4,7 +4,7 @@ import encodeBase62 from "../utils/encodeBase62";
 import db from "@/db";
 import { urls } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import config from "@/config/config";
+import env from "@/config/env";
 
 export const shortController = async (req: Request, res: Response) => {
     try {
@@ -38,11 +38,9 @@ export const shortController = async (req: Request, res: Response) => {
 
         const shortenURL = encodeBase62(ID);
 
-        console.log(`shorten url : ${shortenURL}`);
-
         const shortWebsite = await db
             .update(urls)
-            .set({ shortUrl: `${config.frontendUrl}${shortenURL}` })
+            .set({ shortUrl: `${env.FRONTEND_URL}${shortenURL}` })
             .returning();
 
         console.log(shortWebsite[0]);
@@ -51,7 +49,7 @@ export const shortController = async (req: Request, res: Response) => {
             success: true,
             data: {
                 longUrl: data.website,
-                shortUrl: `${config.frontendUrl}${shortenURL}`,
+                shortUrl: `${env.FRONTEND_URL}${shortenURL}`,
             },
         });
     } catch (error) {
