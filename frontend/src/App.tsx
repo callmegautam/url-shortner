@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Redirect from "./pages/Redirect";
-import Home from "./pages/Home";
+import Home from "@/pages/Home";
+import Redirect from "@/pages/Redirect";
 
 const App = () => {
     return (
