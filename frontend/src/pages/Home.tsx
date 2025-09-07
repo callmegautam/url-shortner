@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import axios from "axios";
+import setClipboard from "@/lib/copy-to-clipboard";
+import { shortOriginalUrl } from "@/services/url";
 import { Copy } from "lucide-react";
 import { useState } from "react";
 
@@ -9,26 +10,19 @@ const Home = () => {
     const [originalWebsiteUrl, setOriginalWebsiteUrl] = useState<string>("");
 
     const handleShortUrl = async () => {
-        const data = {
-            website: originalWebsiteUrl,
-        };
-        const response = await axios.post("http://localhost:8080/url/short", data);
-        setShortUrl(response.data.data.shortUrl || "Something went wrong");
-        console.log(response.data.data.shortUrl);
+        try {
+            console.log(`Original Website: ${originalWebsiteUrl}`);
+            const response = await shortOriginalUrl(originalWebsiteUrl);
+            setShortUrl(response.data.data.shortUrl || "Something went wrong");
+            console.log(response.data.data.shortUrl);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const handlecCopy = () => {
         setClipboard(shortUrl);
     };
-
-    async function setClipboard(text: string) {
-        const type = "text/plain";
-        const clipboardItemData = {
-            [type]: text,
-        };
-        const clipboardItem = new ClipboardItem(clipboardItemData);
-        await navigator.clipboard.write([clipboardItem]);
-    }
 
     return (
         <div className="flex justify-center bg-black flex-col  items-center w-screen h-screen text-white gap-4">

@@ -11,7 +11,7 @@ app.use(express.json());
 
 // routes
 import urlRoute from "@/routes";
-app.use("/url", urlRoute);
+app.use("/api/url", urlRoute);
 
 // error handler
 app.use(globalErrorHandler);
