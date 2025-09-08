@@ -37,7 +37,10 @@ export const urlShortner = async (req: Request, res: Response) => {
     const ID = shortUrlID[0].id;
     const shortenURL = encodeBase62(ID);
 
-    await db.update(urls).set({ shortUrl: `${env.FRONTEND_URL}${shortenURL}` });
+    await db
+        .update(urls)
+        .set({ shortUrl: `${env.FRONTEND_URL}${shortenURL}` })
+        .where(eq(urls.id, ID));
 
     return res.status(HttpStatus.OK).json({
         success: true,

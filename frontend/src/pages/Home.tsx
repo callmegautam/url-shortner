@@ -4,6 +4,7 @@ import setClipboard from "@/lib/copy-to-clipboard";
 import { shortOriginalUrl } from "@/services/url";
 import { Copy } from "lucide-react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Home = () => {
     const [shortUrl, setShortUrl] = useState<string>("");
@@ -14,6 +15,7 @@ const Home = () => {
             console.log(`Original Website: ${originalWebsiteUrl}`);
             const response = await shortOriginalUrl(originalWebsiteUrl);
             setShortUrl(response.data.data.shortUrl || "Something went wrong");
+            toast.success("Url generated successfully");
             console.log(response.data.data.shortUrl);
         } catch (error) {
             console.log(error);
@@ -21,12 +23,17 @@ const Home = () => {
     };
 
     const handlecCopy = () => {
+        if (!shortUrl) {
+            toast.error("Oops! First create the short url");
+            return;
+        }
         setClipboard(shortUrl);
+        toast.success("Short Url Copied");
     };
 
     return (
         <div className="flex justify-center bg-black flex-col  items-center w-screen h-screen text-white gap-4">
-            <h1 className="text-4xl">Url Shortner [under dev]</h1>
+            <h1 className="text-4xl">Url Shortner</h1>
             <div className="flex w-full max-w-sm items-center gap-2">
                 <div className="flex w-full max-w-sm items-center gap-2">
                     <Input
