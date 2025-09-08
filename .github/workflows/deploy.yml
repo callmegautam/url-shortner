@@ -14,11 +14,11 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 22.16.0
+                  node-version: 20.x # safer LTS
 
             - name: Install backend deps
               working-directory: ./backend
-              run: npm install --production
+              run: npm install # include devDeps for build
 
             - name: Deploy backend
               uses: appleboy/ssh-action@v1.0.3
@@ -30,6 +30,6 @@ jobs:
                       cd ~/apps/url-backend
                       git pull origin main
                       cd backend
-                      npm install --production
-                      npm run bild
-                      pm2 restart url-backend || pm2 start dist/index.js --name url-backend
+                      npm install
+                      npm run build
+                      pm2 restart ecosystem.config.mjs --update-env || pm2 start ecosystem.config.mjs --update-env
