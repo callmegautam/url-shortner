@@ -7,10 +7,10 @@ export default {
             autorestart: true,
             watch: false,
             env: {
-                NODE_ENV: "DEVELOPMENT",
-                DB_URL: "postgresql://postgres:admin@localhost:5432/url-shortner",
+                NODE_ENV: "PRODUCTION",
+                DB_URL: "postgresql://postgres:callmegautam@localhost:5432/url-shortner",
                 FRONTEND_URL: "http://localhost:5173/",
-                BACKEND_URL: "http://localhost:8080/",
+                BACKEND_URL: "https://api.gautamsuthar.in/url",
                 PORT: "3001",
             },
             env_production: {
