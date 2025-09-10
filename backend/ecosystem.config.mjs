@@ -15,9 +15,9 @@ export default {
             },
             env_production: {
                 NODE_ENV: "PRODUCTION",
-                DB_URL: "postgresql://postgres:admin@localhost:5432/url-shortner",
+                DB_URL: "postgresql://postgres:yourpassword@localhost:5432/url-shortner?schema=public",
                 FRONTEND_URL: "http://localhost:5173/",
-                BACKEND_URL: "http://localhost:8080/",
+                BACKEND_URL: "https://api.gautamsuthar.in/url/",
                 PORT: "3001",
             },
         },
