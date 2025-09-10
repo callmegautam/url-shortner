@@ -3,6 +3,7 @@ import env from "@/config/env";
 
 app.listen(env.PORT || 8080, () => {
     console.log(`Server is listening on ${env.BACKEND_URL}`);
+    console.log(`ENV: ${env.FRONTEND_URL}`);
 });
 
 app.on("error", (err: any) => {
